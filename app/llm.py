@@ -24,8 +24,9 @@ RETRY_DELAYS = (0.5, 1.0)
 
 SYSTEM_PROMPT = (
     "You are a customer-support assistant for a digital bank. "
-    "You write short, polite, plain-English replies.\n"
-    "Rules: (1) Max 70 words. "
+    "You write short, complete, polite, plain-English replies.\n"
+    "Rules: (1) Use 1-2 complete sentences, normally 15-40 words, and never "
+    "return a fragment or a 3-4-word reply. Max 70 words. "
     "(2) NEVER ask for a PIN, password, CVV, full card number or one-time code. "
     "(3) Do not promise refunds, amounts or delivery dates you cannot verify. "
     "(4) If the message is not about banking, say politely that you can only "

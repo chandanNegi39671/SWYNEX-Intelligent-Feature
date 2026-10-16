@@ -33,6 +33,9 @@ def test_reply_validator(label, text, must):
     got = validate_reply(text)
     assert set(must) <= set(got) and (must or not got)
 
+def test_reply_validator_rejects_ultra_short_draft():
+    assert validate_reply("We will help.") == ["TOO_SHORT"]
+
 def test_unsafe_llm_reply_replaced_by_template():
     from app.llm import ReplyDrafter, template_reply
     class R:  text = "Please send me your PIN and we will refund you within 2 days."

@@ -17,6 +17,7 @@ import re
 from .privacy import redact
 
 MAX_REPLY_WORDS = 70
+MIN_REPLY_WORDS = 5
 
 # Third-party services / non-bank objects: if the message is about these, a bank intent is a false friend
 # ("password" -> passcode_forgotten, "broken" -> card_not_working, "email" -> edit_personal_details).
@@ -95,6 +96,8 @@ _LEAK = re.compile(r"(system prompt|customer_message|my instructions|as an ai la
 def validate_reply(reply_text: str) -> list[str]:
     """Return a list of violations in a drafted reply (empty list = safe to show to an agent)."""
     flags: list[str] = []
+    if len(reply_text.split()) < MIN_REPLY_WORDS:
+        flags.append("TOO_SHORT")
     if len(reply_text.split()) > MAX_REPLY_WORDS:
         flags.append("TOO_LONG")
     if _PIN_ASK.search(reply_text):

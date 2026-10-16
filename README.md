@@ -46,7 +46,7 @@ flowchart LR
 
 **Two integrations:**
 1. **Model integration:** the trained Task 1 scikit-learn model is wrapped as a service (`app/classifier.py`) and exposed via a FastAPI REST API, a browser UI and a CLI.
-2. **Public AI API integration:** the [Google Gemini API](https://ai.google.dev/gemini-api/docs) using the official [`google-genai`](https://github.com/googleapis/python-genai) SDK drafts a short customer reply (or a clarifying question when the classifier is unsure). It is **optional**: without a key, or on any API failure, a deterministic template is used, so the prototype always works offline.
+2. **Public AI API integration:** the [Google Gemini API](https://ai.google.dev/gemini-api/docs) using the official [`google-genai`](https://github.com/googleapis/python-genai) SDK drafts a short, complete customer reply (or a clarifying question when the classifier is unsure). Ultra-short fragments are rejected by the reply validator and replaced with the deterministic template. It is **optional**: without a key, or on any API failure, a deterministic template is used, so the prototype always works offline.
 
 ## 2. Quick start (2 minutes, no API key needed)
 ```powershell
