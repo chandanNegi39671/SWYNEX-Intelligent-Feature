@@ -1,0 +1,13 @@
+scikit-learn==1.8.0
+numpy
+scipy
+joblib
+fastapi
+uvicorn[standard]
+google-genai
+httpx
+pydantic
+pytest
+python-dotenv
+pandas
+jupyter
